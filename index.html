@@ -8,10 +8,9 @@
     body {
       margin: 0;
       background: #f8f9fa;
-      display: flex;
+      text-align: center; 
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
     svg {
@@ -23,10 +22,91 @@
     text {
       font-family: "Arial", sans-serif;
     }
+
+    .diagram {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;      
+        text-align: center;   
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+
+    .row {
+        display: flex;           
+        justify-content: center;
+        gap: 20px;               
+    }
+
+    .item {
+        text-align: center;      
+         width: 600px; 
+    }
+
+    .item img {
+        width: 500px;            
+        height: auto;
+        display: block;          
+        margin: 0 auto;          
+    }
+
   </style>
 </head>
 <body>
-  <svg id="canvas" width="600" height="300"></svg>
-  <script src="main.js"></script>
+    <p style="font-size: xx-large;">Assignment 3</p>
+    <div id = "vector_diagram" class = "diagram">
+        <svg id="vector_diagram_canvas" width="600" height="300"></svg>
+        <script src="vector_diagram.js"></script>
+        <div class="row" style ="margin-top: 50px;">
+            <div class="item">
+                <img src="./vector_diagram_image/1.png" alt="1">
+                <p>1. Asked ChatGPT to how to make grid on with D3.js</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/2.png" alt="2">
+                <p>2. Asked ChatGPT to how to make dot grid with D3.js</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/3.png" alt="3">
+                <p>3. Asked ChatGPT to how to make labels with D3.js</p>
+            </div>
+        </div>
+
+        <div class="row" style ="margin-top: 50px;">
+            <div class="item">
+                <img src="./vector_diagram_image/4.png" alt="4">
+                <p>4. Based on the knowledge I made grid, added lines connecting points</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/5.png" alt="5">
+                <p>5. Asked ChatGPT how to add dotted strokes</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/6.png" alt="6">
+                <p>6. Asked ChatGPT to add arrow head with polygon (I tried to add arrow head with marker but it does not move along with transition animation, so I used polygon method instead) </p>
+            </div>
+        </div>
+
+        <div class="row" style ="margin-top: 50px;">
+            <div class="item">
+                <img src="./vector_diagram_image/7.png" alt="7">
+                <p>7. Asked ChatGPT to rotate arrow head</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/7.png" alt="8">
+                <p>8. Asked ChatGPT to add transition animation</p>
+            </div>
+            <div class="item">
+                <img src="./vector_diagram_image/8.png" alt="9">
+                <p>8. Asked ChatGPT to add interaction for dragging dots to update arrows</p>
+            </div>
+        </div>
+    </div>
+
+    <div id = "word_network" class = "diagram">
+        <svg id="word_network_canvas" width="600" height="300"></svg>
+            <script src="word_network.js"></script>
+    </div>
+
 </body>
 </html>

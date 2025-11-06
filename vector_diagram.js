@@ -1,5 +1,5 @@
 function vectorDiagram() {
-    const svg = d3.select("#canvas");
+    const svg = d3.select("#vector_diagram_canvas");
     const width = +svg.attr("width");
     const height = +svg.attr("height");
     const gridSize = 50;
@@ -36,29 +36,31 @@ function vectorDiagram() {
         { start: "e1a", end: "e2b", color: "darkblue", dashed: true },
     ];
 
-    //arrow animate
+    // //arrow animate
     function drawAnimatedArrow(p1, p2, color, dashed, index, onComplete) {
         const line = svg.append("line")
         .attr("id", `arrow-${index}`)
         .attr("x1", p1.x)
         .attr("y1", p1.y)
-        .attr("x2", p1.x)
-        .attr("y2", p1.y)
+        .attr("x2", p2.x)
+        .attr("y2", p2.y)
         .attr("stroke", color)
         .attr("stroke-width", 2)
         .style("stroke-dasharray", dashed ? "6,4" : "none")
         .attr("opacity", 0);
+
+
+
+        const dx = p2.x - p1.x;
+        const dy = p2.y - p1.y;
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
 
         //make arrow head with polygon direcrlty
         const arrowHead = svg.append("polygon")
         .attr("points", "0,0 -8,-4 -8,4")
         .attr("fill", color)
         .attr("opacity", 0)
-        .attr("transform", `translate(${p1.x},${p1.y}) rotate(0)`);
-
-        const dx = p2.x - p1.x;
-        const dy = p2.y - p1.y;
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        .attr("transform", `translate(${p2.x},${p2.y}) rotate(${angle})`);
 
         line.transition()
         .delay(index * 600)
@@ -87,7 +89,7 @@ function vectorDiagram() {
         });
     }
 
-    // ---------- Sequential animation ----------
+    //Sequential animation
     let completed = 0;
     arrowsData.forEach((a, i) => {
         const p1 = points.find(p => p.id === a.start);
@@ -100,7 +102,7 @@ function vectorDiagram() {
         });
     });
 
-    // ---------- Labels ----------
+    //Labels
     const labels = [
         { id: "e1a", text: "e¹ᵅ", offsetX: 10, offsetY: 0 },
         { id: "e2a", text: "e²ᵅ", offsetX: -30, offsetY: 0 },
@@ -120,7 +122,7 @@ function vectorDiagram() {
         .style("opacity", 0);
     });
 
-    // ---------- Draggable points (appear after animation) ----------
+    //Draggable points
     function showPoints() {
         const circles = svg.selectAll("circle")
         .data(points)
@@ -154,7 +156,7 @@ function vectorDiagram() {
 
         svg.selectAll("circle").call(drag);
 
-        // 라벨도 함께 서서히 등장
+        //label fade-in
         labels.forEach(label => {
         svg.select(`#label-${label.id}`)
             .transition()
@@ -164,7 +166,7 @@ function vectorDiagram() {
         });
     }
 
-    // ---------- Update lines & labels when dragging ----------
+    //Update lines & labels when dragging
     function updateDiagram() {
         const p = Object.fromEntries(points.map(pt => [pt.id, pt]));
 
@@ -179,7 +181,7 @@ function vectorDiagram() {
             .attr("x2", p[a.end].x)
             .attr("y2", p[a.end].y);
 
-        // 화살표 끝 polygon 위치 갱신
+        //update arrow head position
         const head = svg.selectAll("polygon").nodes()[i];
         if (head) {
             d3.select(head)
