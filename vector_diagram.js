@@ -1,4 +1,4 @@
-function vectorDiagram() {
+function VectorDiagram() {
     const svg = d3.select("#vector_diagram_canvas");
     const width = +svg.attr("width");
     const height = +svg.attr("height");
@@ -198,4 +198,19 @@ function vectorDiagram() {
     }
 }
 
-vectorDiagram();
+function showVectorDiagram() {
+    const allContainers = document.getElementsByClassName("diagram");
+    for (let i = 0; i < allContainers.length; i++) {
+        allContainers[i].style.display = "none";
+    }
+
+    const container = document.getElementById("vector_diagram");
+    container.style.display = "block";
+    container.style.opacity = 0;
+    container.style.transition = "opacity 1s";
+    setTimeout(() => container.style.opacity = 1, 10);
+
+    d3.select("#vector_diagram_canvas").selectAll("*").remove(); //clear previous diagram
+    VectorDiagram();
+}
+

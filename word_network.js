@@ -100,7 +100,8 @@ function WordNetwork() {
     d.x = event.x;
     d.y = event.y;
     d3.select(this).attr("transform", `translate(${d.x}, ${d.y})`);
-    updateLines();
+        updateLines();
+        
     })
     .on("end", function () {
     d3.select(this).style("cursor", "grab");
@@ -119,4 +120,18 @@ function WordNetwork() {
     }
 }
 
-WordNetwork();
+function showWordNetwork() {
+    const allContainers = document.getElementsByClassName("diagram");
+    for (let i = 0; i < allContainers.length; i++) {
+        allContainers[i].style.display = "none";
+    }
+    
+    const container = document.getElementById("word_network");
+    container.style.display = "block";
+    container.style.opacity = 0;
+    container.style.transition = "opacity 1s";
+    setTimeout(() => container.style.opacity = 1, 10);
+
+    d3.select("#word_network_canvas").selectAll("*").remove(); //clear previous diagram
+    WordNetwork();
+}
