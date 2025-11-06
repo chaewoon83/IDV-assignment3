@@ -101,7 +101,29 @@ function WordNetwork() {
     d.y = event.y;
     d3.select(this).attr("transform", `translate(${d.x}, ${d.y})`);
         updateLines();
-        
+        const rect = d3.select(this).select("rect");
+        target = words.find(w => w.text === d.text);
+        if (d.x > width / 2) {
+
+            if(target.color == "red"){
+                rect.attr("stroke", "orange"); 
+            }
+            else{
+                rect.attr("stroke", "darkblue");   
+            }
+            rect.attr("fill", "#ccffcc");
+
+        } else {
+            if(target.color == "green"){
+                rect.attr("stroke", "orange"); 
+            }
+            else{
+                rect.attr("stroke", "darkblue");   
+            }
+            rect.attr("fill", "#ffcccc");
+        }
+
+        updateLines();
     })
     .on("end", function () {
     d3.select(this).style("cursor", "grab");
