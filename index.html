@@ -59,6 +59,7 @@
     <button onclick="showWordNetwork()">Show Word Network</button>
     <button onclick="showVennDiagram()">Show Venn Diagram</button>
     <button onclick="showBarGraph()">Show BarGraph</button>
+    <button onclick="showFunction()">Show FunctionGraph</button>
 
     <div id = "vector_diagram" class = "diagram" style="display: none;">
         <svg id="vector_diagram_canvas" width="600" height="300"></svg>
@@ -184,7 +185,7 @@
     <div id = "bar_graph" class = "diagram">
         <svg id="bar_graph_canvas" width="600" height="300"></svg>
         <script src="bar_graph.js"></script>
-                <div class="row" style ="margin-top: 50px;">
+        <div class="row" style ="margin-top: 50px;">
             <div class="item">
                 <img src="./bar_graph_image/1.png" alt="1">
                 <p>1. Just copy paste sample code of the bar graph from the slide</p>
@@ -204,8 +205,33 @@
                 <p>4. Changed style of bar graph and added texts&lines</p>
             </div>
             <div class="item">
-                <img src="./bar_graph_image/4.png" alt="5">
+                <img src="./bar_graph_image/5.png" alt="5">
                 <p>5. Added hovering interaction</p>
+            </div>
+        </div>
+    </div>
+
+    <div id = "function" class = "diagram">
+        <svg id="function_canvas" width="600" height="300"></svg>
+        <script src="function.js"></script>
+        <div class="row" style ="margin-top: 50px;">
+            <div class="item">
+                <img src="./function_image/1.png" alt="1">
+                <p>1. Captured image from slides and aksed ChatGPT to make it similar with d3.js</p>
+            </div>
+            <div class="item">
+                <img src="./function_image/2.png" alt="2">
+                <p>2. Fixed some codes about area and dotted lines </p>
+            </div>
+            <div class="item">
+                <img src="./function_image/3.png" alt="3">
+                <p>3. Tried to limit the length of dotted line to fit to the graph</p>
+            </div>
+        </div>
+        <div class="row" style ="margin-top: 50px;">
+            <div class="item">
+                <img src="./function_image/4.png" alt="4">
+                <p>4. Added transition & drag interation and revert the length of the dotted lines </p>
             </div>
         </div>
     </div>
