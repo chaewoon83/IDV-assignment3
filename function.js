@@ -143,13 +143,6 @@ function MakeFunction() {
         .attr("opacity", 0.4)
         .attr("clip-path", "url(#clipRight)");
 
-
-    // const Area2 = g.append("path")
-    //     .datum(graph2Area)
-    //     .attr("fill", "gray")
-    //     .attr("opacity", 0.4)
-    //     .attr("d", area);
-
     //dotted line
     const dottedLine1 = g.append("line")
         .attr("x1", xScale(graph1AreaValue))

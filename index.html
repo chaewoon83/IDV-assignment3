@@ -28,7 +28,7 @@
         flex-direction: column; 
         align-items: center;      
         text-align: center;   
-        margin-top: 200px;
+        margin-top: 100px;
         margin-bottom: 200px;
         display: none;
     }
@@ -50,20 +50,23 @@
         display: block;          
         margin: 0 auto;          
     }
+    .buttons {
+        margin-top: 30px;
+    }
 
   </style>
 </head>
 <body>
-    <p style="font-size: xx-large;">Assignment 3</p>
-    <button onclick="showVectorDiagram()">Show Vector Diagram</button>
-    <button onclick="showWordNetwork()">Show Word Network</button>
-    <button onclick="showVennDiagram()">Show Venn Diagram</button>
-    <button onclick="showBarGraph()">Show BarGraph</button>
-    <button onclick="showFunction()">Show FunctionGraph</button>
-
+    <p style="font-size:50px; margin-top: 50px;">Assignment 3</p>
+    <button class="buttons" onclick="showVectorDiagram()">Show Vector Diagram</button>
+    <button class="buttons" onclick="showWordNetwork()">Show Word Network</button>
+    <button class="buttons" onclick="showVennDiagram()">Show Venn Diagram</button>
+    <button class="buttons" onclick="showBarGraph()">Show BarGraph</button>
+    <button class="buttons" onclick="showFunction()">Show FunctionGraph</button>
     <div id = "vector_diagram" class = "diagram" style="display: none;">
         <svg id="vector_diagram_canvas" width="600" height="300"></svg>
         <script src="vector_diagram.js"></script>
+        <p>Drag dot to move vectors</p>
         <div class="row" style ="margin-top: 50px;">
             <div class="item">
                 <img src="./vector_diagram_image/1.png" alt="1">
@@ -110,7 +113,8 @@
 
     <div id = "word_network" class = "diagram">
         <svg id="word_network_canvas" width="600" height="300"></svg>
-            <script src="word_network.js"></script>
+        <script src="word_network.js"></script>
+        <p>Drag word to move</p>
          <div class="row" style ="margin-top: 50px;">
             <div class="item">
                 <img src="./word_network/1.png" alt="1">
@@ -149,11 +153,11 @@
 
     <div id = "venn_diagram" class = "diagram">
         <svg id="venn_diagram_canvas" width="600" height="300"></svg>
-
         <div>
             <input id="circleCount" type="number" min="2" max="6" value="3">
             <button onclick="drawVenn()">Draw</button>
         </div>
+        <p>Input 2~6 integer to see Venn Diagram</p>
         <script src="venn_diagram.js"></script>
 
         <div class="row" style ="margin-top: 50px;">
@@ -185,6 +189,7 @@
     <div id = "bar_graph" class = "diagram">
         <svg id="bar_graph_canvas" width="600" height="300"></svg>
         <script src="bar_graph.js"></script>
+        <p>Hover mouse cursor on the graph to see value</p>
         <div class="row" style ="margin-top: 50px;">
             <div class="item">
                 <img src="./bar_graph_image/1.png" alt="1">
@@ -214,6 +219,7 @@
     <div id = "function" class = "diagram">
         <svg id="function_canvas" width="600" height="300"></svg>
         <script src="function.js"></script>
+        <p>Drag dotted lines to change area</p>
         <div class="row" style ="margin-top: 50px;">
             <div class="item">
                 <img src="./function_image/1.png" alt="1">

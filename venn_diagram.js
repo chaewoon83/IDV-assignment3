@@ -5,8 +5,20 @@ function VennDiagram() {
 
     svg.selectAll("*").remove(); // clear old diagram
 
-    const n = parseInt(document.getElementById("circleCount").value);
+    n = parseInt(document.getElementById("circleCount").value);
+    const min = 1;
+    const max = 6;
+
+    if (n < min) {
+        n = min
+        document.getElementById("circleCount").value = min
+    };
+    if (n > max) {
+        n = max
+        document.getElementById("circleCount").value = max
+    };
     //const n = 5; //number of sets
+
     const cx = width / 2;
     const cy = height / 2;
     const r = 50;
